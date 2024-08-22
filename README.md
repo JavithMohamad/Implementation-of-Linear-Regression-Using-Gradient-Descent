@@ -40,7 +40,7 @@ def linearREG(X1,Y,learnRate=0.01,Iteration=1000):
     return theta
 data=pd.read_csv('CSVs/50_Startups.csv',header=None)
 print(data.head())
-X=(data.iloc[1:,:-2].values) # Assuming the last column is your target variable 'Y' and the preceding column
+X=(data.iloc[1:,:-2].values) 
 print(X)
 X1=X.astype(float)
 scaler=StandardScaler()
