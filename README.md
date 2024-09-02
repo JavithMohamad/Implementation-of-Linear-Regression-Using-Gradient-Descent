@@ -1,73 +1,88 @@
-# EX-03 Implementation of Linear Regression using Gradient Descent
-<table>
-<tr>
-<td width=85% align=left>
-    
-### Aim:
+# Implementation-of-Linear-Regression-Using-Gradient-Descent
+
+## AIM:
 To write a program to predict the profit of a city using the linear regression model with gradient descent.
-</td> 
-<td valign=top>
 
-**DATE:**
-</td>
-</tr> 
-</table>
-
-### Equipments Required:
+## Equipments Required:
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
-### Algorithm:
-1. Import pandas, numpy and mathplotlib.pyplot.
-2. Trace the best fit line and calculate the cost function.
-3. Calculate the gradient descent and plot the graph for it.
-4. Predict the profit for two population sizes.
+
+## Algorithm
+1.Import the required library and read the dataframe.
+
+2.Write a function computeCost to generate the cost function.
+
+3.Perform iterations og gradient steps with learning rate.
+
+4.Plot the Cost function using Gradient Descent and generate the required graph. 
+
+## Program:
+
 ```
-Developed By: JAVITH M 
-Register No: 212222110014
-```
-### Program:
-```Python
-import numpy as np
+
+/*
+Program to implement the linear regression using gradient descent.
+Developed by: JAVITH
+RegisterNumber: 212222110014
+
+import numpy as  np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-def linearREG(X1,Y,learnRate=0.01,Iteration=1000):        
-    X=np.c_[np.ones(len(X1)),X1]                          
-    theta=np.zeros(X.shape[1]).reshape(-1,1)              
-    for _ in range(Iteration):
-        predictions=(X).dot(theta).reshape(-1,1)          
-        errors=(predictions-Y).reshape(-1,1)              
-        theta-=learnRate*(1/len(X1))*X.T.dot(errors)      
-    return theta
-data=pd.read_csv('CSVs/50_Startups.csv',header=None)
+def linear_regression(x1,y,learning_rate=0.01,num_iters=100):
+  X=np.c_[np.ones(len(X1)),x1]
+  theta=np.zeros(X.shape[1]).reshape(-1,1)
+
+  for _ in range(num_iters):
+    predictions=(X).dot(theta).reshape(-1,1)
+    errors=(predictions-y).reshape(-1,1)        
+    theta=learning=learning_rate*(1/len(X1))*X.T.dot(errors)
+  return theta
+
+data=pd.read_csv("50_Startups.csv")
 print(data.head())
-X=(data.iloc[1:,:-2].values) 
+X=(data.iloc[1:,:-2].values)
 print(X)
 X1=X.astype(float)
 scaler=StandardScaler()
-Y=(data.iloc[1:,-1].values).reshape(-1,1)
-print(Y)
-X1scaled=scaler.fit_transform(X1)
-Y1scaled=scaler.fit_transform(Y)
-print(X1scaled,Y1Scaled)
-theta=linearREG(X1scaled,Y1scaled)                            
-newData=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)  
-newScaled=scaler.fit_transform(newData)
-prediction=np.dot(np.append(1, newScaled), theta) 
-prediction=prediction.reshape(-1,1) 
+y=(data.iloc[1:,-1].values).reshape(-1,1)
+print(y)
+X1_Scaled=scaler.fit_transform(X1)
+Y1_Scaled=scaler.fit_transform(y)
+print(X1_Scaled)
+print(Y1_Scaled)
+theta=linear_regression(X1_Scaled,Y1_Scaled);
+
+new_data=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
+new_Scaled=scaler.fit_transform(new_data)
+prediction=np.dot(np.append(1,new_Scaled),theta)
+prediction=prediction.reshape(-1,1)
 pre=scaler.inverse_transform(prediction)
-print(f"Predicted value: {pre}")
+print(f"Predicted value: {pre}")
+*/
 ```
-### Output:
-**data.head()** <br>
-<img height=10% width=99% src="https://github.com/ROHITJAIND/EX-03-Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/118707073/b3ef5ab5-c8d3-42d3-86d5-29eea435dac9"><br><br>
-**X values**&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;**Y values** <br>
-<img height=10% width=48% src="https://github.com/ROHITJAIND/EX-03-Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/118707073/4fa96a4f-0a85-4307-b011-2ab04b73b9a9">&emsp;<img height=10% width=28% src="https://github.com/ROHITJAIND/EX-03-Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/118707073/72810905-e103-4c76-ae8c-8a62f25cce8b"><br>
-<br>
-**X scaled**&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;**Y scaled** <br>
-<img height=10% width=48% src="https://github.com/ROHITJAIND/EX-03-Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/118707073/9b3626af-2148-45d1-a822-a4019da4a3f5">&emsp;<img height=10% width=28% src="https://github.com/ROHITJAIND/EX-03-Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/118707073/a26092ce-9f5e-47b7-97e2-636a1ffe9dc7"><br><br>
-**Predicted Value**<br>
-<img height=5% width=49% src="https://github.com/ROHITJAIND/EX-03-Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/118707073/5f807fd5-7777-40aa-9bb4-ac2508e9026e">
 
+## Output:
+![Screenshot 2024-09-01 192851](https://github.com/user-attachments/assets/b143a0d8-310d-4f84-841d-d41c8edafcdd)
 
-### Result:
+![Screenshot 2024-09-01 193357](https://github.com/user-attachments/assets/7eb74198-63c9-4c90-b102-0af96a624af2)
+
+![Screenshot 2024-09-01 193408](https://github.com/user-attachments/assets/8489dbbc-4dbf-4fed-b196-d873e0744de6)
+
+![Screenshot 2024-09-01 193418](https://github.com/user-attachments/assets/9e1836e6-c0bf-489f-8579-fbc3c944a95c)
+
+![Screenshot 2024-09-01 193428](https://github.com/user-attachments/assets/37f5cbe7-58f6-4c52-8735-05ccce057bd8)
+
+![Screenshot 2024-09-01 193438](https://github.com/user-attachments/assets/08f4b403-1dd2-45d5-933c-131c7c0f2c4e)
+
+![Screenshot 2024-09-01 193450](https://github.com/user-attachments/assets/81334199-3acc-4411-9887-34b27096e7c9)
+
+![Screenshot 2024-09-01 193501](https://github.com/user-attachments/assets/81a15fdf-f89b-4a92-9090-00a73d366cf0)
+
+![Screenshot 2024-09-01 193511](https://github.com/user-attachments/assets/b045e2cf-4805-4c9e-ad97-590e1550141e)
+
+![Screenshot 2024-09-01 193521](https://github.com/user-attachments/assets/b44086c3-7b53-4d2f-a336-97d538e5d00e)
+
+![Screenshot 2024-09-01 193531](https://github.com/user-attachments/assets/91797413-6654-4761-8e77-7877f03a1569)
+
+## Result:
 Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
